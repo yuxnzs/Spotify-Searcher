@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Card } from "react-bootstrap";
 import ".././Styles/style.css";
 
-function Display({ isVisible, imgURL, name, onClose }) {
+const Display = ({ isVisible, imgURL, name, onClose }) => {
   // 如果不可見，返回 null，表示不顯示
   if (!isVisible) return null;
   console.log("Display");
@@ -19,6 +19,6 @@ function Display({ isVisible, imgURL, name, onClose }) {
       </Container>
     </div>
   );
-}
+};
 
 export default Display;

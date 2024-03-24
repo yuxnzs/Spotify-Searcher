@@ -1,16 +1,17 @@
 import Display from "./Display";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Card } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ".././Styles/style.css";
 
-const Albums = ({
-  albums,
+const Tracks = ({
+  tracks,
+  albumImage,
   isDisplayVisible,
   setIsDisplayVisible,
   isLoading,
-  searchAlbumFromArtist,
-  isAlbumsMoreThan50,
+  searchAlbumTracks,
+  isTracksMoreThan50,
 }) => {
   // 將要顯示的專輯傳遞給 Display Component
   const [displayAlbumName, setDisplayAlbumName] = useState("");
@@ -22,19 +23,18 @@ const Albums = ({
     setDisplayAlbumName(albumName);
     setIsDisplayVisible(true); // 顯示視窗
   }
-
   return (
     // 如果還在載入，就不顯示專輯
     !isLoading && (
-      <div className="Albums">
+      <div className="Tracks">
         {/* Showing result from API call */}
         <Container className="content">
           {/* mx-2 for marging */}
           <div className="content-row">
-            {/* Map through the albums and display them */}
-            {albums.map((album, index) => {
+            {/* Map through the Tracks and display them */}
+            {tracks.map((track, index) => {
               // 檢查專輯名稱是否超過特定長度
-              const isLongName = album.name.length > 50;
+              const isLongName = track.name.length > 50;
               return (
                 <Card className="content-card" key={index}>
                   <div className="cover-container">
@@ -42,9 +42,9 @@ const Albums = ({
                       {/* images[0] for highest quality album */}
                       <Card.Img
                         className="cover"
-                        src={album.images[0].url}
+                        src={albumImage}
                         onClick={() => {
-                          displayAlbum(album.images[0].url, album.name);
+                          displayAlbum(albumImage, track.name);
                         }}
                       />
                     </div>
@@ -56,10 +56,10 @@ const Albums = ({
                   >
                     <a
                       className="name-link"
-                      href={album.external_urls.spotify}
+                      href={track.external_urls.spotify}
                       target="_blank"
                     >
-                      <Card.Title className="name">{album.name}</Card.Title>
+                      <Card.Title className="name">{track.name}</Card.Title>
                     </a>
                   </Card.Body>
                 </Card>
@@ -67,10 +67,10 @@ const Albums = ({
             })}
           </div>
         </Container>
-        {isAlbumsMoreThan50 && (
+        {isTracksMoreThan50 && (
           <div className="more-btn">
             {/* 加載按鈕，將 isNewSearch 設為 false */}
-            <button onClick={() => searchAlbumFromArtist(false, true)}>
+            <button onClick={() => searchAlbumTracks(false, true)}>
               載入更多
             </button>
           </div>
@@ -87,4 +87,4 @@ const Albums = ({
   );
 };
 
-export default Albums;
+export default Tracks;
