@@ -1,7 +1,7 @@
 import Display from "./Display";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Card } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ".././Styles/style.css";
 
 const Albums = ({

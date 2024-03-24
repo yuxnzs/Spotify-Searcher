@@ -12,7 +12,7 @@ const Nav = ({
   albumArtistPicture,
   trackArtistPicture,
   albumArtistName,
-  trackArtistName,
+  albumNameForTracks,
   isAlbumSelected,
   setIsAlbumSelected,
   isTrackSelected,
@@ -117,7 +117,7 @@ const Nav = ({
             {/* 第一個後面多餘的條件確保不會在互相切換時，將空格插入至另一個標籤內 */}
             {isAlbumSelected && albums.length > 0 ? `正在搜尋：${albumArtistName}` : isTrackSelected
              && tracks.length > 0 ? "" : "\u00A0"}
-            {isTrackSelected && tracks.length > 0 ? `正在搜尋：${trackArtistName}` : ""}
+            {isTrackSelected && tracks.length > 0 ? `正在搜尋：${albumNameForTracks}` : ""}
           </h5>
 
           <div className="select">

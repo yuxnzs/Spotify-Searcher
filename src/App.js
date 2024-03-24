@@ -14,18 +14,19 @@ const App = () => {
   const [tracks, setTracks] = useState([]);
   const [albumImage, setAlbumImage] = useState("");
   const [trackArtistPicture, setTrackArtistPicture] = useState(null);
-  const [trackArtistName, setTrackArtistName] = useState("");
 
   // Nav.js
   const [searchInput, setSearchInput] = useState("");
   const [albumArtistPicture, setAlbumArtistPicture] = useState(null);
   const [albumArtistName, setAlbumArtistName] = useState("");
+  const [albumNameForTracks, setAlbumNameForTracks] = useState("");
   // 控制是否為專輯或歌曲
   const [isAlbumSelected, setIsAlbumSelected] = useState(true);
   const [isTrackSelected, setIsTrackSelected] = useState(false);
 
   // Display.js；控制放大圖片視窗的狀態
   const [isDisplayVisible, setIsDisplayVisible] = useState(false);
+  const [musicPreview, setMusicPreview] = useState([]);
 
   // Loading.js
   const [isLoading, setIsLoading] = useState(false);
@@ -120,7 +121,7 @@ const App = () => {
       setIsAlbumsMoreThan50
     );
 
-    // Get request using search to get Artist ID
+    // 透過使用者所搜尋的取得歌手 ID
     console.log("Searching", currentSearch);
     try {
       const searchResponse = await fetch(
@@ -131,15 +132,14 @@ const App = () => {
       setAlbumArtistPicture(searchData.artists.items[0].images[1].url);
       setAlbumArtistName(searchData.artists.items[0].name);
 
-      // Return the first artist's ID from the search
+      // 回傳最匹配的結果
       const artistID = searchData.artists.items[0].id;
-      // Get request using Artist ID to get all the Albums from that artist
+      // 透過歌手 ID 取得所有專輯
       const albumsResponse = await fetch(
         `https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album,single&market=US&limit=50&offset=${currentOffset}`,
         searchParameters()
       );
       const albumsData = await albumsResponse.json();
-      // console.log("albumsData", albumsData.items);
 
       // 若取得的資料為 50，就顯示載入更多的按鈕
       setIsAlbumsMoreThan50(albumsData.items.length === 50);
@@ -159,8 +159,8 @@ const App = () => {
       setIsTracksMoreThan50
     );
 
-    // 獲取專輯 ID
     try {
+      // 獲取專輯 ID
       const idResponse = await fetch(
         `https://api.spotify.com/v1/search?q=${currentSearch}&type=album`,
         searchParameters()
@@ -168,25 +168,25 @@ const App = () => {
       const idData = await idResponse.json();
       const albumId = idData.albums.items[0].id;
 
-      // 另外獲取專輯圖片，因為專輯本身不提供專輯圖片
-      const imageResponse = await fetch(
+      // 另外獲取專輯圖片與專輯名稱，因為專輯本身不提供專輯圖片及名稱
+      const albumResponse = await fetch(
         `https://api.spotify.com/v1/albums/${albumId}`,
         searchParameters()
       );
-      const imgData = await imageResponse.json();
-      setAlbumImage(imgData.images[0].url);
+      const albumData = await albumResponse.json();
+      setAlbumImage(albumData.images[0].url);
+      setAlbumNameForTracks(albumData.name);
 
       // 先取得歌手 ID 再取得歌手照片
-      // 因為專輯不提供歌手照片，所以要先從圖片資料中取得歌手 ID
+      // 因為專輯不提供歌手照片，所以要先從專輯資料中取得歌手 ID
       // 再用歌手 ID 取得歌手照片
-      const artistId = imgData.artists[0].id;
+      const artistId = albumData.artists[0].id;
       const artistResponse = await fetch(
         `https://api.spotify.com/v1/artists/${artistId}`,
         searchParameters()
       );
       const artistData = await artistResponse.json();
       setTrackArtistPicture(artistData.images[1].url);
-      setTrackArtistName(artistData.name);
 
       // 根據專輯 ID 獲取歌曲
       const tracksResponse = await fetch(
@@ -194,7 +194,19 @@ const App = () => {
         searchParameters()
       );
       const tracksData = await tracksResponse.json();
-      console.log("tracksData", tracksData.items[0].external_urls.spotify);
+      // console.log(tracksData);
+
+      // // 獲取歌曲 ID
+      // let songId = tracksData.items;
+      // let songIds = songId.map((song) => song.id);
+      // // console.log(songIds);
+
+      // const musicPreviewResponse = await fetch(
+      //   `https://api.spotify.com/v1/tracks/7G0gBu6nLdhFDPRLc0HdDG?market=US`, // songIds 會被轉換成一串以逗號分隔的 ID 字符串
+      //   searchParameters()
+      // );
+      // const musicPreviewData = await musicPreviewResponse.json();
+      // console.log(musicPreviewData);
 
       // 若取得的資料為 50，就顯示載入更多的按鈕
       setIsTracksMoreThan50(tracksData.items.length === 50);
@@ -213,7 +225,7 @@ const App = () => {
         setSearchInput={setSearchInput}
         albumArtistPicture={albumArtistPicture}
         albumArtistName={albumArtistName}
-        trackArtistName={trackArtistName}
+        albumNameForTracks={albumNameForTracks}
         searchAlbumFromArtist={searchAlbumFromArtist}
         searchAlbumTracks={searchAlbumTracks}
         trackArtistPicture={trackArtistPicture}
