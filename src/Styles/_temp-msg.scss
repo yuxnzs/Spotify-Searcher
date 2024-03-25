@@ -1,0 +1,28 @@
+// TempMsg.js
+.temp-msg {
+  position: fixed;
+  padding: 1rem;
+  border-radius: 20px;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  animation: fade 1.5s;
+  // 確保動畫結束後不會消失
+  animation-fill-mode: forwards;
+  z-index: 10;
+  display: block;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

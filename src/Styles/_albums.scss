@@ -1,0 +1,99 @@
+// Albums.js
+.content {
+  display: flex;
+  justify-content: center;
+  .content-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-width: 90vw;
+    .content-card {
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 40px;
+      flex: 0 0 20%;
+      // max-width: 20%;
+      min-height: 320px;
+      padding-right: 15px;
+      padding-left: 15px;
+      .cover-container {
+        // 根據一般專輯大小（690 x 690）所查看出的 px
+        // 避免有小專輯圖片，造成排版不整齊
+        // 所以設定最小高度要為一般專輯大小的寬度
+        min-height: 321.683px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // padding-bottom: 50px;
+        .img-wrapper {
+          margin-top: 12px;
+          // 設定圖片放大效果
+          overflow: hidden;
+          border-radius: 0.5rem;
+          .cover {
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+
+      .name-container {
+        height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+        // 確保橫的不會有滾動條出現
+        overflow-x: hidden;
+        .name-link {
+          text-decoration: none;
+          color: black;
+          transition: text-shadow 0.3s ease;
+          &:hover {
+            text-shadow: 0 0 3px rgba(80, 80, 80, 0.5); /* 輕微的黑色陰影 */
+          }
+        }
+        .name {
+          // 預設的 margin-bottom 移除
+          margin-bottom: 0;
+          line-height: 28px;
+          text-align: center;
+          font-weight: 10000;
+          // overflow-wrap: break-word;
+        }
+      }
+    }
+  }
+}
+
+.more-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // 與 content-card 的 margin-bottom 一致
+  margin-bottom: 40px;
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #f3f3f3;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+// 讓專輯名稱長的顯示為 flex-start，短的維持置中
+.align-top {
+  align-items: flex-start !important; /* 確保覆蓋先前的樣式 */
+}

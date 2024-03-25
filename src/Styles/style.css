@@ -8,6 +8,33 @@
   font-family: "Poppins", "Noto Sans TC", sans-serif;
 }
 
+.Nav nav ul {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem;
+  margin: 0;
+  background-color: #333;
+  color: white;
+}
+.Nav nav ul li {
+  list-style: none;
+  margin-right: 1rem;
+  letter-spacing: 0.2rem;
+}
+.Nav nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  transition: 0.2s;
+}
+.Nav nav ul li a:hover {
+  color: #d2d2d2;
+}
+.Nav nav ul li .icon {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+
 .search-bar {
   position: relative;
   margin-bottom: 1.5rem;
@@ -300,6 +327,85 @@
     opacity: 0;
   }
 }
+.Artist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin-top: 2rem;
+}
+.Artist .track-container {
+  display: flex;
+  width: 75%;
+  height: 150px;
+  outline: 1px solid black;
+  border-radius: 1rem;
+  z-index: 100;
+}
+.Artist .track-container .track-img {
+  width: 150px;
+  height: 150px;
+  margin-right: 1rem;
+  overflow: hidden;
+  flex: 0 0 150px;
+}
+.Artist .track-container .track-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+.Artist .track-container .right-side-wrapper {
+  display: flex;
+  width: 100%;
+}
+.Artist .track-container .right-side-wrapper .content {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 85%;
+}
+.Artist .track-container .right-side-wrapper .content .track-title {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 60%;
+  font-size: 2.5rem;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+}
+.Artist .track-container .right-side-wrapper .content .track-info {
+  flex: 0 0 100%;
+  width: 100%;
+}
+.Artist .track-container .right-side-wrapper .content .track-info .album-name {
+  font-size: 1.3rem;
+  margin-bottom: 0;
+}
+.Artist .track-container .right-side-wrapper .content .track-info .release-date {
+  font-size: 0.8rem;
+  margin-bottom: 0.1rem;
+}
+.Artist .track-container .right-side-wrapper .popularity {
+  flex: 0 0 15%;
+  width: 100px;
+  position: relative;
+  border-left: 1px solid black;
+}
+.Artist .track-container .right-side-wrapper .popularity .text {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  padding-left: 0.2rem;
+}
+.Artist .track-container .right-side-wrapper .popularity .score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  margin: 0;
+}
+
 @media (max-width: 1700px) {
   .content .content-row .content-card {
     flex: 0 0 25%;

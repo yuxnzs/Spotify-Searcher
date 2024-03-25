@@ -1,0 +1,51 @@
+// Display.js
+.Display {
+  .display-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    .filter {
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100vw;
+      min-height: 100vh;
+      z-index: 0;
+    }
+    .display-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      max-width: 800px;
+      margin-left: 3rem;
+      margin-right: 3rem;
+      // transform: translate(-50%, -50%);
+      .display-image {
+        // max-width: 690px;
+        // max-height: 690px;
+        padding: 25px 25px 25px 25px;
+        border-radius: 2rem;
+      }
+      .display-name-container {
+        // 將 bootstrap 的樣式移除
+        padding-top: 0;
+        // 讓圖片不會因為名稱過長而被放大
+        max-width: 690px;
+        .display-name {
+          font-size: 1.5rem;
+          // font-weight: bold;
+          text-align: center;
+          line-height: 2.1rem;
+        }
+      }
+    }
+  }
+}
