@@ -1,12 +1,18 @@
-import Search from "../components/SearchBar";
+import MusicSearchBar from "../components/MusicSearchBar";
 import Albums from "../components/Albums";
 import Loading from "../components/Loading";
 import Tracks from "../components/Tracks";
-import useToken from "../components/useToken";
+import useToken from "../hooks/useToken";
+import useInputLoadingState from "../hooks/useInputLoadingState";
 import { useState } from "react";
 
 const SearchMusic = () => {
   const searchParameters = useToken();
+
+  // 從自定 hook 取得搜尋欄位的值與 Loading 狀態
+  // 之後將傳給 MusicSearchBar 回傳的 searchInput 做 API 搜尋
+  const { searchInput, setSearchInput, isLoading, setIsLoading } =
+    useInputLoadingState();
 
   // Albums.js
   const [albums, setAlbums] = useState([]);
@@ -16,8 +22,7 @@ const SearchMusic = () => {
   const [albumImage, setAlbumImage] = useState("");
   const [trackArtistPicture, setTrackArtistPicture] = useState(null);
 
-  // Search.js
-  const [searchInput, setSearchInput] = useState("");
+  // MusicSearchBar.js
   const [albumArtistPicture, setAlbumArtistPicture] = useState(null);
   const [albumArtistName, setAlbumArtistName] = useState("");
   const [albumNameForTracks, setAlbumNameForTracks] = useState("");
@@ -27,9 +32,6 @@ const SearchMusic = () => {
 
   // Display.js；控制放大圖片視窗的狀態
   const [isDisplayVisible, setIsDisplayVisible] = useState(false);
-
-  // Loading.js
-  const [isLoading, setIsLoading] = useState(false);
 
   // 控制載入更多
   const [offset, setOffset] = useState(0);
@@ -92,7 +94,6 @@ const SearchMusic = () => {
         searchParameters()
       );
       const searchData = await searchResponse.json();
-      console.log("searchData", searchData);
       setAlbumArtistPicture(searchData.artists.items[0].images[1].url);
       setAlbumArtistName(searchData.artists.items[0].name);
 
@@ -172,7 +173,7 @@ const SearchMusic = () => {
 
   return (
     <div>
-      <Search
+      <MusicSearchBar
         setSearchInput={setSearchInput}
         albumArtistPicture={albumArtistPicture}
         albumArtistName={albumArtistName}

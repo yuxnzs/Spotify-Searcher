@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Nav from "./components/Nav";
-import Token from "./components/useToken";
+import Token from "./hooks/useToken";
 
 const layout = () => {
   return (

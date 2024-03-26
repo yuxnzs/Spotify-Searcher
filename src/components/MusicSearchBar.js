@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import ".././Styles/style.css";
 import TempMsg from "./TempMsg";
+import useSearchHandler from "../hooks/useSearchHandler";
+import { useState, useEffect } from "react";
 
-const Nav = ({
+const MusicSearchBar = ({
   setSearchInput,
   searchAlbumFromArtist,
   searchAlbumTracks,
@@ -22,63 +23,46 @@ const Nav = ({
   albums,
   tracks,
 }) => {
-  // 控制搜尋的頻率，避免呼叫 API 過於頻繁
-  // 並且顯示訊息
-  const [canSearch, setCanSearch] = useState(true);
-  const [isMsgVisible, setIsMsgVisible] = useState(false);
-  const [message, setMessage] = useState("");
+  // 接收 useSearchHandler 回傳的物件
+  const { handleSearch, message, isMsgVisible } = useSearchHandler({
+    isAlbumSelected,
+    isTrackSelected,
+    setAlbums,
+    setTracks,
+    searchAlbumFromArtist,
+    searchAlbumTracks,
+  });
 
-  // 確保不會因為使用者一直按著 Enter 鍵而導致訊息顯示錯誤
-  const [isShowingMessage, setIsShowingMessage] = useState(false);
+  // 設置當前圖片狀態
+  const [currentPicture, setCurrentPicture] = useState("");
 
-  function handleSearch() {
-    // 如果無法搜尋，就顯示提示訊息，並且返回
-    if (!canSearch) {
-      // 避免使用者一直按著 Enter 鍵而導致訊息顯示錯誤
-      // 如果沒有 isShowingMessage，setTimeout 會一直被呼叫（背後創建許多計時器）
-      // 導致一直重新啟動一個新的 setTimeout 計時器來在 3 秒後將消息隱藏
-      if (!isShowingMessage) {
-        console.log("操作過快，請稍後再試");
-        setMessage("操作過快，請稍後再試");
-        setIsMsgVisible(true);
-        setIsShowingMessage(true);
-
-        setTimeout(() => {
-          setIsMsgVisible(false);
-          setIsShowingMessage(false);
-        }, 1500); // 3秒後消息消失
-      }
-      return;
+  // 只有切到專輯且專輯自己有圖片才會顯示
+  // 只有切到歌曲且歌曲自己有圖片才會顯示
+  // 如果是切到歌曲頁面，自己沒圖片，但是專輯有圖片，也不會顯示
+  // 確保不該不會發生專輯取得圖片後，切換到歌曲白框又出現
+  useEffect(() => {
+    // 切到專輯頁面，同時有專輯歌手圖片時，顯示專輯圖片
+    if (isAlbumSelected && albumArtistPicture) {
+      setCurrentPicture(albumArtistPicture);
+      // 切到歌曲頁面，同時有歌曲歌手圖片時，顯示歌曲圖片
+    } else if (!isAlbumSelected && trackArtistPicture) {
+      setCurrentPicture(trackArtistPicture);
+    } else {
+      // 如果當前頁面沒有圖片，就不顯示，解決沒圖片時出現白框問題
+      setCurrentPicture("");
     }
-
-    if (isAlbumSelected) {
-      // 當切換成專輯並且重新搜尋時
-      setAlbums([]);
-      searchAlbumFromArtist(true);
-      console.log("in isAlbumSelected");
-    } else if (isTrackSelected) {
-      // 當切換成歌曲並且重新搜尋時
-      setTracks([]);
-      searchAlbumTracks(true);
-      console.log("in searchAlbumTracks");
-    }
-    setCanSearch(false);
-
-    setTimeout(() => {
-      setCanSearch(true);
-    }, 1500); // 設定 1.5 秒後才可以再次搜尋
-  }
+  }, [isAlbumSelected, albumArtistPicture, trackArtistPicture]);
 
   return (
-    <div className="Nav">
+    <div className="MusicSearchBar">
       <TempMsg message={message} isMsgVisible={isMsgVisible} />
       <div className="search-bar">
-        <div className="artist-img-wrapper">
-          <img
-            className="artist-img"
-            src={isAlbumSelected ? albumArtistPicture : trackArtistPicture}
-          />
-        </div>
+        {/* 在圖片載入前會顯示移除不了的白框，所以沒有圖片時先不渲染 */}
+        {currentPicture && (
+          <div className="artist-img-wrapper">
+            <img className="artist-img" src={currentPicture} alt="Artist" />
+          </div>
+        )}
 
         <div className="search">
           <div className="logo">
@@ -152,4 +136,4 @@ const Nav = ({
   );
 };
 
-export default Nav;
+export default MusicSearchBar;

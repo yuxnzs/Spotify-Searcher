@@ -10,12 +10,13 @@
 }
 
 @import "./nav";
-@import "./search";
+@import "./music-search-bar";
 @import "./albums";
 @import "./display";
 @import "./loading";
 @import "./temp-msg";
 @import "./artist";
+@import "./_artist-search-bar";
 
 @media (max-width: 1700px) {
   .content {
@@ -142,6 +143,7 @@
         .display-name-container {
           .display-name {
             font-size: 1.2rem;
+            line-height: 2rem;
           }
         }
       }
@@ -154,20 +156,6 @@
     .content-row {
       .content-card {
         flex: 0 0 85%;
-      }
-    }
-  }
-
-  .Display {
-    .display-container {
-      .display-card {
-        margin-left: 1rem;
-        margin-right: 1rem;
-        .display-name-container {
-          .display-name {
-            font-size: 1rem;
-          }
-        }
       }
     }
   }
@@ -190,217 +178,7 @@
         .display-name-container {
           .display-name {
             font-size: 1rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1700px) {
-  .search-bar {
-    .artist-img-wrapper {
-      right: 22%;
-    }
-  }
-}
-
-@media (min-width: 1100px) and (max-width: 1199px) {
-  .search-bar {
-    .artist-img-wrapper {
-      right: 22%;
-    }
-  }
-}
-
-@media (min-width: 1000px) and (max-width: 1099px) {
-  .search-bar {
-    .artist-img-wrapper {
-      .artist-img {
-        width: 270px;
-        height: 270px;
-      }
-    }
-    .search {
-      padding-left: 8%;
-    }
-  }
-}
-
-@media (min-width: 870px) and (max-width: 999px) {
-  .search-bar {
-    .artist-img-wrapper {
-      right: 21%;
-      .artist-img {
-        width: 270px;
-        height: 270px;
-      }
-    }
-    .search {
-      padding-left: 8%;
-      .select {
-        label {
-          justify-content: flex-start;
-          flex: 0 0 100%;
-          margin-left: 0;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 650px) and (max-width: 869px) {
-  .search-bar {
-    .artist-img-wrapper {
-      right: 23%;
-      .artist-img {
-        width: 250px;
-        height: 250px;
-      }
-    }
-    .search {
-      padding-left: 7%;
-      .select {
-        label {
-          justify-content: flex-start;
-          flex: 0 0 100%;
-          margin-left: 0;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 575px) and (max-width: 649px) {
-  .search-bar {
-    .artist-img-wrapper {
-      right: 24%;
-      .artist-img {
-        width: 250px;
-        height: 250px;
-      }
-    }
-    .search {
-      padding-left: 5%;
-      .select {
-        label {
-          justify-content: flex-start;
-          flex: 0 0 100%;
-          margin-left: 0;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 470px) and (max-width: 574px) {
-  .search-bar {
-    .artist-img-wrapper {
-      right: 24%;
-      .artist-img {
-        width: 200px;
-        height: 200px;
-      }
-    }
-    .search {
-      padding-left: 5%;
-      padding-top: 0.5rem;
-      min-height: 20rem;
-      .logo {
-        flex: 0 0 100%;
-        margin-top: 0.5rem;
-        img {
-          width: 200px;
-          // 維持長寬比
-          height: auto;
-        }
-      }
-
-      h1 {
-        // margin-top: 1rem;
-        font-size: 1.4rem;
-      }
-
-      h5 {
-        font-size: 1.1rem;
-        margin-top: 0.3rem;
-      }
-
-      .input-group {
-        .search-input {
-          width: 30%;
-          font-size: 1.2rem;
-        }
-        .search-icon {
-          font-size: 1.2rem;
-        }
-      }
-
-      .select {
-        label {
-          justify-content: flex-start;
-          flex: 0 0 100%;
-          margin-left: 0;
-          font-size: 1.2rem;
-        }
-        input {
-          transform: scale(1.2);
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 469px) {
-  .search-bar {
-    .artist-img-wrapper {
-      right: 22%;
-      .artist-img {
-        width: 140px;
-        height: 140px;
-      }
-    }
-
-    .search {
-      padding-top: 1rem;
-      padding-left: 4%;
-      min-height: 15rem;
-      .logo {
-        img {
-          width: 150px;
-        }
-      }
-
-      h1 {
-        font-size: 1.4rem;
-      }
-
-      h5 {
-        font-size: 1rem;
-        margin-top: 0.4rem;
-        margin-bottom: 0.2rem;
-      }
-
-      .input-group {
-        width: 30rem;
-        .search-input {
-          font-size: 1rem;
-        }
-        .search-icon {
-          font-size: 1.1rem;
-        }
-      }
-
-      .select {
-        label {
-          flex: 0 0 100%;
-          font-size: 1rem;
-          margin-left: 0;
-          // 將整個 label 靠左
-          justify-content: flex-start;
-
-          input {
-            transform: scale(1.2);
+            line-height: 1.5rem;
           }
         }
       }

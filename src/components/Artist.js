@@ -1,32 +1,38 @@
 import React from "react";
 import "../Styles/style.css";
 
-const Artist = () => {
+const Artist = ({ topTracks, isLoading }) => {
+  // console.log(topTracks[0].album);
   return (
-    <div className="Artist">
-      <div className="track-container">
-        <div className="track-img">
-          <img
-            src="https://i.scdn.co/image/ab67616d0000b273e787cffec20aa2a396a61647
-
-            "
-            alt="Track imgage"
-          />
-        </div>
-        <div className="right-side-wrapper">
-          <div className="content">
-            <div className="track-title">Cruel Summer</div>
-            <div className="track-info">
-              <p className="album-name">From: Lover</p>
-              <p className="release-date">Release Date : 2019-08-23</p>
+    // 如果還在載入，就不渲染
+    !isLoading && (
+      <div className="Artist">
+        {topTracks.map((track, index) => {
+          return (
+            <div className="track-container" key={index}>
+              <div className="track-img">
+                <img src={track.album.images[0].url} alt="Track image" />
+              </div>
+              <div className="right-side-wrapper">
+                <div className="content">
+                  <div className="track-title">{track.name}</div>
+                  <div className="track-info">
+                    <div className="album-name">專輯：{track.album.name}</div>
+                    <div className="release-date">
+                      發行時間：{track.album.release_date}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="popularity">
+                <p className="text">流行度</p>
+                <p className="score">{track.popularity}</p>
+              </div>
             </div>
-          </div>
-          <div className="popularity">
-            <p className="text">Popularity</p> <p className="score">98</p>
-          </div>
-        </div>
+          );
+        })}
       </div>
-    </div>
+    )
   );
 };
 

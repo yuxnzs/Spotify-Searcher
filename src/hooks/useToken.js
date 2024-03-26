@@ -42,8 +42,8 @@ const useToken = () => {
   }, []); // Fetch token when the page loads
 
   // 給 SearchMusic.js 與 SearchArtist.js 使用的參數
-  const searchParameters = () => {
-    console.log("searchParameters is running", accessToken);
+
+  return () => {
     return {
       method: "GET",
       headers: {
@@ -52,8 +52,6 @@ const useToken = () => {
       },
     };
   };
-
-  return () => searchParameters();
 };
 
 export default useToken;
