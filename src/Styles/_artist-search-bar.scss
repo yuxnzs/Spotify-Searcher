@@ -4,7 +4,9 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
-  margin-top: 1rem;
+  // margin-top: 1rem;
+  background-color: rgb(30, 30, 30);
+  height: 7rem;
 
   .artist-search-bar-container {
     position: relative;
@@ -24,7 +26,7 @@
         border: none;
         background-color: #f2f2f2;
         border-radius: 10px;
-        padding: 0.5rem 1.5rem 0.5rem;
+        padding: 0.5rem 1.2rem 0.5rem;
         color: black;
         font-size: 1.5rem;
         font-weight: 500;

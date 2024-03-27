@@ -101,10 +101,11 @@ const SearchMusic = () => {
       const artistID = searchData.artists.items[0].id;
       // 透過歌手 ID 取得所有專輯
       const albumsResponse = await fetch(
-        `https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album,single&market=US&limit=50&offset=${currentOffset}`,
+        `https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album,single&limit=50&offset=${currentOffset}`,
         searchParameters()
       );
       const albumsData = await albumsResponse.json();
+      console.log("Albums Data: ", albumsData);
 
       // 若取得的資料為 50，就顯示載入更多的按鈕
       setIsAlbumsMoreThan50(albumsData.items.length === 50);

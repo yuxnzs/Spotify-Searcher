@@ -4,6 +4,7 @@ import Artist from "../components/Artist";
 import ArtistSearchBar from "../components/ArtistSearchBar";
 import useInputLoadingState from "../hooks/useInputLoadingState";
 import Loading from "../components/Loading";
+import ArtistInfo from "../components/ArtistInfo";
 import { useState } from "react";
 
 const SearchArtist = () => {
@@ -14,11 +15,8 @@ const SearchArtist = () => {
   const { searchInput, setSearchInput, isLoading, setIsLoading } =
     useInputLoadingState();
 
-  // Artist.js
-  const [artistPicture, setArtistPicture] = useState(null);
-  const [artistName, setArtistName] = useState("");
-
   const [topTracks, setTopTracks] = useState([]);
+  const [artistInfo, setArtistInfo] = useState({});
 
   const searchArtistTopTracks = async () => {
     let artistId = "";
@@ -30,10 +28,8 @@ const SearchArtist = () => {
         searchParameters()
       );
       const searchData = await searchResponse.json();
-      console.log("Search Data: ", searchData);
-      setArtistPicture(searchData.artists.items[0].images[1].url);
-      setArtistName(searchData.artists.items[0].name);
-      console.log("ID", searchData.artists.items[0].id);
+      setArtistInfo(searchData.artists.items[0]);
+      console.log(searchData.artists.items[0]);
       // 回傳給 searchArtistTopTracks 使用
       artistId = searchData.artists.items[0].id;
     } catch (error) {
@@ -59,9 +55,14 @@ const SearchArtist = () => {
         setSearchInput={setSearchInput}
         searchArtistTopTracks={searchArtistTopTracks}
       />
-      {/* topTracks 被更新才渲染 */}
+
+      {/* topTracks 被更新才渲染，避免搜尋為空 */}
       {topTracks.length !== 0 && (
-        <Artist topTracks={topTracks} isLoading={isLoading} />
+        // 如果想要在條件渲染中返回多個元件，需要將它們包在一個元素中
+        <>
+          <ArtistInfo artistInfo={artistInfo} isLoading={isLoading} />
+          <Artist topTracks={topTracks} isLoading={isLoading} />
+        </>
       )}
       <Loading isLoading={isLoading} />
     </div>

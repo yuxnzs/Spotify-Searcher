@@ -25,7 +25,7 @@ const Artist = ({ topTracks, isLoading }) => {
                 </div>
               </div>
               <div className="popularity">
-                <p className="text">流行度</p>
+                <p className="text">熱門度</p>
                 <p className="score">{track.popularity}</p>
               </div>
             </div>

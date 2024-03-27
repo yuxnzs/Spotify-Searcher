@@ -6,8 +6,8 @@ const Loading = ({ isLoading }) => {
 
   return (
     <div className="loading">
-      <div class="loader"></div>
-      <p>Loading</p>
+      <div className="loader"></div>
+      <p>Loading...</p>
     </div>
   );
 };
