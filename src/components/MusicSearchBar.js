@@ -103,7 +103,6 @@ const MusicSearchBar = ({
              && tracks.length > 0 ? "" : "\u00A0"}
             {isTrackSelected && tracks.length > 0 ? `正在搜尋：${albumNameForTracks}` : ""}
           </h5>
-
           <div className="select">
             <label className="left-label">
               <input

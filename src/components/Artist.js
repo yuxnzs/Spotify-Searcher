@@ -10,8 +10,15 @@ const Artist = ({ topTracks, isLoading }) => {
         {topTracks.map((track, index) => {
           return (
             <div className="track-container" key={index}>
-              <div className="track-img">
-                <img src={track.album.images[0].url} alt="Track image" />
+              <div className="track-img-wrapper">
+                {index < 3 && (
+                  <img src="/hot.png" alt="Hot tag" className="hot-tag" />
+                )}
+                <img
+                  src={track.album.images[0].url}
+                  alt="Track image"
+                  className="track-img"
+                />
               </div>
               <div className="right-side-wrapper">
                 <div className="content">

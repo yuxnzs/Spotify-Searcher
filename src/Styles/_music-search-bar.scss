@@ -11,14 +11,26 @@ $search-bar-color: rgb(30, 30, 30);
       position: absolute;
       top: 50%;
       right: 19%;
+      // translate 會造成滑鼠在圖片內時，一直觸發 hover 事件
+      // 導致圖片不斷放大縮小
       transform: translate(50%, -50%);
       overflow: hidden;
       border-radius: 50%;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       .artist-img {
         transition: transform 0.3s ease;
-        &:hover {
-          transform: scale(1.1);
-        }
+        // 將不是 300 x 300 的圖片放滿容器
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &:hover .artist-img {
+        transform: scale(1.1);
       }
     }
 
@@ -137,10 +149,8 @@ $search-bar-color: rgb(30, 30, 30);
 @media (min-width: 1000px) and (max-width: 1099px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
-      .artist-img {
-        width: 270px;
-        height: 270px;
-      }
+      width: 270px;
+      height: 270px;
     }
     .search {
       padding-left: 8%;
@@ -152,10 +162,8 @@ $search-bar-color: rgb(30, 30, 30);
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
       right: 21%;
-      .artist-img {
-        width: 270px;
-        height: 270px;
-      }
+      width: 270px;
+      height: 270px;
     }
     .search {
       padding-left: 8%;
@@ -173,11 +181,10 @@ $search-bar-color: rgb(30, 30, 30);
 @media (min-width: 650px) and (max-width: 869px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
+      top: 38%;
       right: 23%;
-      .artist-img {
-        width: 250px;
-        height: 250px;
-      }
+      width: 250px;
+      height: 250px;
     }
     .search {
       padding-left: 7%;
@@ -195,11 +202,10 @@ $search-bar-color: rgb(30, 30, 30);
 @media (min-width: 575px) and (max-width: 649px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
+      top: 35%;
       right: 24%;
-      .artist-img {
-        width: 250px;
-        height: 250px;
-      }
+      width: 220px;
+      height: 220px;
     }
     .search {
       padding-left: 5%;
@@ -217,11 +223,10 @@ $search-bar-color: rgb(30, 30, 30);
 @media (min-width: 470px) and (max-width: 574px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
+      top: 35%;
       right: 24%;
-      .artist-img {
-        width: 200px;
-        height: 200px;
-      }
+      width: 200px;
+      height: 200px;
     }
     .search {
       padding-left: 5%;
@@ -275,11 +280,10 @@ $search-bar-color: rgb(30, 30, 30);
 @media (max-width: 469px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
-      right: 22%;
-      .artist-img {
-        width: 140px;
-        height: 140px;
-      }
+      top: 34%;
+      right: 20%;
+      width: 140px;
+      height: 140px;
     }
 
     .search {

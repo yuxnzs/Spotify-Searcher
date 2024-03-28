@@ -19,25 +19,23 @@ const ArtistSearchBar = ({ setSearchInput, searchArtistTopTracks }) => {
   return (
     <div className="ArtistSearchBar">
       <TempMsg message={message} isMsgVisible={isMsgVisible} />
-      <div className="artist-search-bar-container">
-        <div className="input-container">
-          <input
-            className="artist-search-input"
-            placeholder="輸入歌手名稱"
-            type="text"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-          <FontAwesomeIcon
-            className="artist-search-icon"
-            icon={faMagnifyingGlass}
-            onClick={() => handleSearch()}
-          />
-        </div>
+      <div className="input-container">
+        <input
+          className="artist-search-input"
+          placeholder="輸入歌手名稱"
+          type="text"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch();
+            }
+          }}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <FontAwesomeIcon
+          className="artist-search-icon"
+          icon={faMagnifyingGlass}
+          onClick={() => handleSearch()}
+        />
       </div>
     </div>
   );

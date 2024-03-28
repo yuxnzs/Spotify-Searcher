@@ -29,7 +29,7 @@ const SearchArtist = () => {
       );
       const searchData = await searchResponse.json();
       setArtistInfo(searchData.artists.items[0]);
-      console.log(searchData.artists.items[0]);
+      console.log(searchData.artists.items[0].external_urls.spotify);
       // 回傳給 searchArtistTopTracks 使用
       artistId = searchData.artists.items[0].id;
     } catch (error) {
