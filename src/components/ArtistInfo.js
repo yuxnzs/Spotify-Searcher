@@ -23,6 +23,7 @@ const ArtistInfo = ({ artistInfo, isLoading }) => {
                 {artistInfo.name}
               </div>
             </div>
+            <div className="break-line"></div>
             <div className="artist-info-right-bottom">
               <div className="artist-info-genre">
                 類 型：{" "}

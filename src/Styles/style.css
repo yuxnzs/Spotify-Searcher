@@ -809,8 +809,10 @@
   letter-spacing: 1px;
   cursor: pointer;
 }
+.ArtistInfo .artist-info-container .artist-info-right-side .break-line {
+  flex: 0 0 100%;
+}
 .ArtistInfo .artist-info-container .artist-info-right-side .artist-info-right-bottom {
-  flex: 0 0 20rem;
   max-width: 100%;
   font-weight: 500;
 }
@@ -840,7 +842,6 @@
   }
   .ArtistInfo .artist-info-container .artist-info-right-side .artist-info-right-top .artist-info-name {
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
     font-size: 2.5rem;
   }
 }
