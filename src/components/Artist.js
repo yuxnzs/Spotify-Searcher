@@ -16,7 +16,7 @@ const Artist = ({ topTracks, isLoading }) => {
                 )}
                 <img
                   src={track.album.images[0].url}
-                  alt="Track image"
+                  alt="Track cover"
                   className="track-img"
                 />
               </div>
