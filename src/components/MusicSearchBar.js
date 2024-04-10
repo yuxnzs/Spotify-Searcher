@@ -95,14 +95,16 @@ const MusicSearchBar = ({
             />
           </div>
           {/* prettier-ignore */}
-          <h5>
-            {/* 確保即使還沒搜尋，也會為"正在搜尋"預留位置，不會造成搜尋後有元素位移感覺 */}
-            {/* 分別進行處理是要確保兩個邏輯分開，不會讓專輯結果影響到歌曲 */}
-            {/* 第一個後面多餘的條件確保不會在互相切換時，將空格插入至另一個標籤內 */}
-            {isAlbumSelected && albums.length > 0 ? `正在搜尋：${albumArtistName}` : isTrackSelected
-             && tracks.length > 0 ? "" : "\u00A0"}
-            {isTrackSelected && tracks.length > 0 ? `正在搜尋：${albumNameForTracks}` : ""}
-          </h5>
+          <div className="searching-info">
+            <h5>
+              {/* 確保即使還沒搜尋，也會為"正在搜尋"預留位置，不會造成搜尋後有元素位移感覺 */}
+              {/* 分別進行處理是要確保兩個邏輯分開，不會讓專輯結果影響到歌曲 */}
+              {/* 第一個後面多餘的條件確保不會在互相切換時，將空格插入至另一個標籤內 */}
+              {isAlbumSelected && albums.length > 0 ? `正在搜尋：${albumArtistName}` : isTrackSelected
+               && tracks.length > 0 ? "" : "\u00A0"}
+              {isTrackSelected && tracks.length > 0 ? `正在搜尋：${albumNameForTracks}` : ""}
+            </h5>
+          </div>
           <div className="select">
             <label className="left-label">
               <input

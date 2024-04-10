@@ -21,7 +21,6 @@ $search-bar-color: rgb(30, 30, 30);
       display: flex;
       justify-content: center;
       align-items: center;
-
       .artist-img {
         transition: transform 0.3s ease;
         // 將不是 300 x 300 的圖片放滿容器
@@ -90,10 +89,15 @@ $search-bar-color: rgb(30, 30, 30);
           cursor: pointer;
         }
       }
-      h5 {
-        margin: 0;
-        color: rgb(250, 250, 250);
+      .searching-info {
         flex: 0 0 100%;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        h5 {
+          margin: 0;
+          color: rgb(250, 250, 250);
+          max-width: 50%;
+        }
       }
 
       .select {
@@ -130,15 +134,7 @@ $search-bar-color: rgb(30, 30, 30);
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1700px) {
-  .MusicSearchBar .search-bar {
-    .artist-img-wrapper {
-      right: 22%;
-    }
-  }
-}
-
-@media (min-width: 1100px) and (max-width: 1199px) {
+@media (min-width: 1100px) and (max-width: 1700px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
       right: 22%;
@@ -181,7 +177,6 @@ $search-bar-color: rgb(30, 30, 30);
 @media (min-width: 650px) and (max-width: 869px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
-      top: 38%;
       right: 23%;
       width: 250px;
       height: 250px;
@@ -202,10 +197,9 @@ $search-bar-color: rgb(30, 30, 30);
 @media (min-width: 575px) and (max-width: 649px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
-      top: 35%;
       right: 24%;
-      width: 220px;
-      height: 220px;
+      width: 250px;
+      height: 250px;
     }
     .search {
       padding-left: 5%;
@@ -223,7 +217,6 @@ $search-bar-color: rgb(30, 30, 30);
 @media (min-width: 470px) and (max-width: 574px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
-      top: 35%;
       right: 24%;
       width: 200px;
       height: 200px;
@@ -280,8 +273,7 @@ $search-bar-color: rgb(30, 30, 30);
 @media (max-width: 469px) {
   .MusicSearchBar .search-bar {
     .artist-img-wrapper {
-      top: 34%;
-      right: 20%;
+      right: 22%;
       width: 140px;
       height: 140px;
     }
