@@ -6,8 +6,8 @@ const useToken = () => {
   // 使用 async/await 來確保取得 token
   useEffect(() => {
     const fetchToken = async () => {
-      ***REMOVED***
-      ***REMOVED***
+      const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+      const CLIENT_SECRET = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
 
       console.log("Token.js is running");
 
