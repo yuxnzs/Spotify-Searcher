@@ -516,6 +516,28 @@
     transform: rotate(360deg);
   }
 }
+@media screen and (min-width: 450px) and (max-width: 550px) {
+  .loading .loader {
+    border: 18px solid #f3f3f3;
+    border-top: 18px solid #3498db;
+    width: 180px;
+    height: 180px;
+  }
+  .loading p {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (max-width: 449px) {
+  .loading .loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    width: 160px;
+    height: 160px;
+  }
+  .loading p {
+    font-size: 1.6rem;
+  }
+}
 .temp-msg {
   position: fixed;
   padding: 1rem;
