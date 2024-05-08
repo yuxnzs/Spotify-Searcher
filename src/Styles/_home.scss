@@ -1,0 +1,47 @@
+.background-img {
+  .filter {
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  min-height: 100vh;
+  position: fixed;
+  width: 100%;
+  // 確保不遮住網頁整個東西
+  z-index: -5;
+  bottom: 0;
+  left: 0;
+  /* 設置背景圖，取代原本用 <img> 設定，避免縮小視窗時圖片跟著縮 */
+  background-image: url("/public/home_page_background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 背景圖固定 */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .text {
+    z-index: 100;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .title {
+      margin: 10rem;
+      font-size: 5rem;
+      letter-spacing: 0.5rem;
+    }
+    .intro {
+      font-size: 2.5rem;
+      letter-spacing: 0.5rem;
+    }
+  }
+  .button {
+    z-index: 100;
+  }
+}
