@@ -28,11 +28,11 @@
     z-index: 100;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    height: 19rem;
     .title {
-      margin: 10rem;
       font-size: 5rem;
       letter-spacing: 0.5rem;
     }
@@ -41,7 +41,28 @@
       letter-spacing: 0.5rem;
     }
   }
-  .button {
+  .button-container {
     z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 35rem;
+    margin-top: 5rem;
+    .button {
+      border: 1px solid rgb(200, 200, 200);
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 0.5rem;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .link {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+      }
+    }
   }
 }
