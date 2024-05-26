@@ -8,10 +8,12 @@ const Nav = () => {
   return (
     <div className="Nav">
       <nav>
-        <Link className="logo" to="/">
-          <img src={process.env.PUBLIC_URL + "/logo512.png"} alt="" />
-          <h1 className="title">Spotify Searcher</h1>
-        </Link>
+        <div className="logo">
+          <Link className="logo-link" to="/">
+            <img src={process.env.PUBLIC_URL + "/logo512.png"} alt="" />
+            <h1 className="website-name">Spotify Searcher</h1>
+          </Link>
+        </div>
         <div className="list">
           <ul>
             <li>

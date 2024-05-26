@@ -42,7 +42,11 @@ const SearchMusic = () => {
   const [lastValidSearch, setlastValidSearch] = useState("");
 
   const initializeSearch = (isNewSearch, isLoadMore, setMoreThan50) => {
-    // 直接計算當前應使用的 offset 值，而不依賴於 setOffset，因為 setOffset 是非同步的
+    if (!searchInput) {
+      return;
+    }
+
+    // 直接計算當前應使用的 offset 值，而不依賴於 setOffset，因為 setOffset 為非同步
     let currentOffset = isNewSearch ? 0 : offset + 50;
     let currentSearch = isLoadMore ? lastValidSearch : searchInput;
     console.log("lastValidSearch", lastValidSearch);
@@ -79,6 +83,10 @@ const SearchMusic = () => {
     isNewSearch = true,
     isLoadMore = false
   ) => {
+    if (!searchInput) {
+      return;
+    }
+
     // 初始化函數會使用到的變數與條件
     const { currentOffset, currentSearch } = initializeSearch(
       isNewSearch,
@@ -119,6 +127,10 @@ const SearchMusic = () => {
   };
 
   const searchAlbumTracks = async (isNewSearch = true, isLoadMore = false) => {
+    if (!searchInput) {
+      return;
+    }
+
     const { currentOffset, currentSearch } = initializeSearch(
       isNewSearch,
       isLoadMore,

@@ -58,6 +58,7 @@ const Albums = ({
                       className="name-link"
                       href={album.external_urls.spotify}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <Card.Title className="name">{album.name}</Card.Title>
                     </a>

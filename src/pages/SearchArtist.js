@@ -21,6 +21,10 @@ const SearchArtist = () => {
   const searchArtistTopTracks = async () => {
     let artistId = "";
     setIsLoading(true);
+    if (!searchInput) {
+      setIsLoading(false);
+      return;
+    }
     console.log("searchInput", searchInput);
     try {
       const searchResponse = await fetch(
