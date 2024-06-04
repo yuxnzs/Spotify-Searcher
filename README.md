@@ -2,9 +2,44 @@
 
 此專案於 2024 年 3 月製作
 
-Spotify 搜尋網站透過 Spotify API，提供使用者搜尋歌曲、專輯及歌手資訊等，並搭配易於使用的介面，讓使用者能夠快速找到自己喜歡的音樂。
+「Spotify 搜尋網站」透過 Spotify API，提供使用者搜尋歌曲、專輯及歌手資訊等，並搭配易於使用的介面，讓使用者能夠快速找到自己喜歡的音樂。
 
 ## 專案截圖 🖥
+
+### 首頁
+
+![homepage](./assets/homepage.png)
+
+### 專輯搜尋
+
+![album](./assets/album.png)
+
+### 歌曲搜尋
+
+![track](./assets/track.png)
+
+### 音樂詳情
+
+![album_display](./assets/album_display.png)
+![track_display](./assets/track_display.png)
+
+### 更多按鈕
+
+![more_button](./assets/more_button.png)
+
+### 提示訊息
+
+![message](./assets/message.png)
+
+### 歌手資訊
+
+![artist](./assets/artist.png)
+
+### 響應式設計
+
+![responsive_homepage](./assets/responsive_homepage.png)
+![responsive_music](./assets/responsive_music.png)
+![responsive_artist](./assets/responsive_artist.png)
 
 ## 使用技術 🔧
 
